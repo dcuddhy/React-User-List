@@ -3,19 +3,20 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import './index.css';
 
-
-    ReactDOM.render(
-      <div>Hello, world!</div>,
-      document.getElementById('root')
-    );
-
-
     var userList = 'http://localhost:3000/api/users';
     $.getJSON( userList, {
         format: 'json'
     })
     .done(function( data ) {
-      $.each( data.data, function( i, d ) {
-        $( '#users' ).append('<div>' + JSON.stringify(d) + ' </div>');
-      });
+
+    $.each( data.data, function( i, d ) {
+        $( '#users-table' ).append(
+            '<tr class="user-list-item">' +
+            '   <td class="user-name">' + JSON.stringify(d['full_name']) + '</td>' +
+            '   <td class="user-email">' + JSON.stringify(d['email']) + '</td>' +
+            '   <td class="user-view">' + '[VIEW BUTTON]' + '</td>' +
+            '   <td class="user-survey-date">' + JSON.stringify(d['survey_date']) + '</td>' +
+            ' </tr>'
+        );
+    });
     });

@@ -1,0 +1,42 @@
+/* Styles Per Pairin Style Guide */
+:root {
+    --text-color: #595959;
+    --light-blue: #207C9D;
+    --dark-blue: #004A5E;
+    --yellow: #F0BD1D;
+    --green: #66CC66;
+    --red: #AC0817;
+    --background: #f5f5f2;
+    --user-list: #ECECE5;
+}
+body{
+    background: var(--background);
+    color: var(--text-color);
+    font-size: 14px;
+    font-family: Lato;
+}
+
+/* Users List Styles */
+#users-table-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.user-list-item {
+    display: inline-block;
+    background: var(--user-list);
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.user-name {
+    width: 150px;
+}
+.user-name,
+.user-email {
+    float: left;
+}
+.user-survey-date,
+.user-view {
+    float: right;
+}
