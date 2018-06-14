@@ -1,6 +1,24 @@
 import React from 'react';
 import User from './user';
 
+
+// Function to sort user list
+// TODO Need to bind this to click events.  Does this become it's own compenent too?
+// NOTE This takes any object as an argument, but we really only need users for now.
+function sortList(object, value, order) {
+    object.sort(function (a, b) {
+        if (a[value] < b[value]) {
+            return order == 'asc' ? -1 : 1;
+        } else if (a[value] > b[value]) {
+            return order == 'asc' ? 1 : -1;
+        } else {
+            // Object values are equal.
+            return 0;
+        }
+    });
+}
+
+
 class UsersList extends React.Component {
     constructor() {
         super();
@@ -15,6 +33,9 @@ class UsersList extends React.Component {
             return results.json();
         }).then(data => {
             let users = data.data;
+
+            sortList(users, 'full_name', 'asc');
+
             this.setState({users: users});
         })
     }
