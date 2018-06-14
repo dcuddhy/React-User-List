@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import axios from 'axios';
 import UserList from './userList';
 import './index.css';
 
@@ -24,48 +23,8 @@ import './index.css';
     //     });
     // });
 
-
-
-
-axios.get('http://localhost:3000/api/users')
-  .then(function (response) {
-    // console.log(response);
-    // console.log(response.data.data);
-    var userListData = response.data.data;
-    // let users = response.data.data;  //TODO: Make these users available instead of static below.
-    console.log('users0: ', users)
-    userListData.map(function(user){
-        // console.log('user: ', user);
-    })
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-
-// based on tutorials here:
-// https://www.youtube.com/watch?v=adDTtcmF7W8
-// https://www.youtube.com/watch?v=It9iL4EXFWc
-let users =  [{
-            id: 1,
-            full_name: "bill burr",
-            name: "bill",
-            phone: "111-111-1111"
-        }, {
-            id: 2,
-            full_name: "randy ray",
-            name: "randy",
-            phone: "222-222-2222"
-        }, {
-            id: 3,
-            full_name: "mark maron",
-            name: "mark",
-            phone: "333-333-3333"
-        }]
-
 class App extends React.Component {
     render() {
-        console.log('users1: ', this.props.users);
         return (
             <div>
                 <h1> Users List</h1>
@@ -75,9 +34,7 @@ class App extends React.Component {
     }
 }
 
-
-
 ReactDOM.render(
-  <App users={users} />,
+  <App />,
   document.getElementById('app')
 );
