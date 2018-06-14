@@ -21,14 +21,32 @@ class UsersList extends React.Component {
 
     render() {
         return (
-            <div id="users-table-container">
-                <table id="users-table">
+            <div id="user-table-container">
+                <table id="user-table">
                     <thead>
                         <tr>
-                            <th className="user-name">Name</th>
-                            <th className="user-email">Email</th>
+                            <th className="user-name">
+                                Name
+                                <div className="sort-toggle">
+                                    <img src={require("./assets/icons/Caret_Up.svg")} />
+                                    <img src={require("./assets/icons/Caret_Down.svg")} />
+                                </div>
+                            </th>
+                            <th className="user-email">
+                                Email
+                                <div className="sort-toggle">
+                                    <img src={require("./assets/icons/Caret_Up.svg")} />
+                                    <img src={require("./assets/icons/Caret_Down.svg")} />
+                                </div>
+                            </th>
                             <th className="user-view"></th>
-                            <th className="user-survey-date">Survey Date</th>
+                            <th className="user-survey-date">
+                                Survey Date
+                                <div className="sort-toggle">
+                                    <img src={require("./assets/icons/Caret_Up.svg")} />
+                                    <img src={require("./assets/icons/Caret_Down.svg")} />
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
