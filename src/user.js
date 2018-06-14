@@ -3,7 +3,7 @@ import React from 'react';
 class User extends React.Component {
     render() {
         return (
-            <tr class="user-list-item">
+            <tr className="user-list-item">
                 <td className="user-name">
                     {this.props.user.full_name}
                 </td>
