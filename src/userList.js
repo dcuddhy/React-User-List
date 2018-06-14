@@ -21,11 +21,23 @@ class UsersList extends React.Component {
 
     render() {
         return (
-            <ul>
-                {this.state.users.map((user)=> {
-                    return < User user={user} key={user.id}/>
-                })}
-            </ul>
+            <div id="users-table-container">
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th className="user-name">Name</th>
+                            <th className="user-email">Email</th>
+                            <th className="user-view"></th>
+                            <th className="user-survey-date">Survey Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.users.map((user)=> {
+                        return < User user={user} key={user.id}/>
+                    })}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

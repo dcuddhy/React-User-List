@@ -34,9 +34,16 @@ body{
 }
 .user-name,
 .user-email {
+    text-align: left;
     float: left;
 }
 .user-survey-date,
 .user-view {
     float: right;
+}
+th.user-name {
+    padding-left: 10px;
+}
+th.user-survey-date {
+    margin-right: 180px;
 }
