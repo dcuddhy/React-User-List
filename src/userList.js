@@ -61,7 +61,7 @@ class UsersList extends React.Component {
                             </th>
                             <th className="user-email">
                                 Email
-                                <div className="sort-toggle">
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'email', this.state.usersOrder)}>
                                     <img src={require("./assets/icons/Caret_Up.svg")} />
                                     <img src={require("./assets/icons/Caret_Down.svg")} />
                                 </div>
@@ -69,7 +69,7 @@ class UsersList extends React.Component {
                             <th className="user-view"></th>
                             <th className="user-survey-date">
                                 Survey Date
-                                <div className="sort-toggle">
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'survey_date', this.state.usersOrder)}>
                                     <img src={require("./assets/icons/Caret_Up.svg")} />
                                     <img src={require("./assets/icons/Caret_Down.svg")} />
                                 </div>
