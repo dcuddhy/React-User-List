@@ -37,8 +37,6 @@ class UsersList extends React.Component {
             let users = data.data;
             let usersOrder = '';
 
-            // sortList(users, 'full_name', 'asc');
-
             this.setState({users: users});
             this.setState({usersOrder: 'asc'});
         })
