@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserList from './userList';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Routes from './routes';
+import Index from './routes/index';
+import Info from './routes/info';
 import './index.css';
 
-class App extends React.Component {
-    render() {
-        return (
-            <div>
-                < UserList users={this.props.users}/>
-            </div>
-        )
-    }
-}
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" exact component={Index} />
+            <Route path="/home" exact component={Info} />
+        </Switch>
+    </BrowserRouter>,
+    document.getElementById('root')
+)
+
+export default Routes;

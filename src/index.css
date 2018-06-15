@@ -15,35 +15,3 @@ body{
     font-size: 14px;
     font-family: Lato;
 }
-
-/* Users List Styles */
-#users-table-container {
-    width: 80%;
-    margin: 0 auto;
-}
-.user-list-item {
-    display: inline-block;
-    background: var(--user-list);
-    padding: 10px;
-    margin-top: 5px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.user-name {
-    width: 150px;
-}
-.user-name,
-.user-email {
-    text-align: left;
-    float: left;
-}
-.user-survey-date,
-.user-view {
-    float: right;
-}
-th.user-name {
-    padding-left: 10px;
-}
-th.user-survey-date {
-    margin-right: 180px;
-}
