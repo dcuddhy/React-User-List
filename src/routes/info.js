@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Index extends React.Component {
+class Info extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class Index extends React.Component {
     }
 }
 
-export default Index;
+export default Info;

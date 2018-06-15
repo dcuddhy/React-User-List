@@ -1,19 +1,30 @@
 /* User And User List Styles */
-#users-table-container {
+#user-table-container {
     width: 80%;
     max-width: 1000px;
     margin: 0 auto;
 }
+#user-table th {
+    font-size: 14px;
+}
+#user-table thead tr {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 15px 5px 15px;
+    box-sizing: border-box;
+}
 .user-list-item {
     display: inline-block;
     background: var(--user-list);
-    padding: 10px;
-    margin-top: 5px;
     width: 100%;
+    padding: 15px;
+    margin-top: 5px;
     box-sizing: border-box;
 }
-.user-name {
-    width: 150px;
+/* This style keeps all user list item text bottom aligned, per design. */
+.user-list-item *:not(.user-name) {
+    height: 19px;
+    line-height: 21px;
 }
 .user-name,
 .user-email {
@@ -23,10 +34,49 @@
 .user-survey-date,
 .user-view {
     float: right;
+    text-align: left;
 }
-th.user-name {
-    padding-left: 10px;
+.user-view{
+    width: 140px;
 }
-th.user-survey-date {
-    margin-right: 180px;
+.user-survey-date{
+    width: 160px
+}
+.user-name {
+    width: 150px;
+    font-size: 16px;
+}
+.user-email {
+    font-weight: 300;
+}
+th.user-email {
+    font-weight: 700;
+}
+.user-view-button {
+    display: inline;
+    background: var(--background);
+    padding: 5px 50px;
+    /* Design has us put margins on L/R of this element, but it produces the
+    appearance of larger padding on .user-list-item.  I recommend using
+    margin-left: 5px; to fix this. */
+    margin: 0 5px;
+    font-weight: 300;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* I want to use the given assets, so I'm going to use CSS to create a sort toggle
+ with two icons rather than creating one icon or bringing FontAwesome into this. */
+.sort-toggle {
+    display: inline-block;
+    padding-left: 7px;
+    margin-bottom: -4px;
+}
+.sort-toggle img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    pointer-events: none;
+}
+.sort-toggle img:nth-of-type(2) {
+    margin-top: -2px;
 }

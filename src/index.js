@@ -6,12 +6,11 @@ import Index from './routes/index';
 import Info from './routes/info';
 import './index.css';
 
-
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Index} />
-            <Route path="/home" exact component={Info} />
+            <Route path="/info" exact component={Info} />
         </Switch>
     </BrowserRouter>,
     document.getElementById('root')
