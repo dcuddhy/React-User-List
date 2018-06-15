@@ -59,7 +59,15 @@ th.user-email {
     font-weight: 700;
 }
 th.user-survey-date {
-    margin-right: 160px;
+    margin-right: 175px;
+}
+.user-view-button {
+    display: inline;
+    background: var(--background);
+    padding: 5px 50px;
+    margin-left: 5px;
+    font-weight: 300;
+    cursor: pointer;
 }
 /* I want to use the given assets, so I'm going to use CSS to create a sort toggle
  with two icons rather than creating one icon or bringing FontAwesome into this. */

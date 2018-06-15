@@ -11,7 +11,10 @@ class User extends React.Component {
                     {this.props.user.email}
                 </td>
                 <td className="user-view">
-                    [ VIEW BUTTON ]
+                    {/* Buttons come with clunky defualt styles.  Let's just use a div. */}
+                    <div className="user-view-button">
+                        View
+                    </div>
                 </td>
                 <td className="user-survey-date">
                     {this.props.user.survey_date}
