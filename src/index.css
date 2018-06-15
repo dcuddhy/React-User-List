@@ -39,6 +39,11 @@ body{
     width: 100%;
     box-sizing: border-box;
 }
+/* This style keeps all user list item text bottom aligned, per design. */
+.user-list-item *:not(.user-name) {
+    height: 19px;
+    line-height: 21px;
+}
 .user-name,
 .user-email {
     text-align: left;
@@ -47,6 +52,10 @@ body{
 .user-survey-date,
 .user-view {
     float: right;
+    text-align: left;
+}
+.user-survey-date{
+    width: 160px
 }
 .user-name {
     width: 150px;
@@ -59,7 +68,7 @@ th.user-email {
     font-weight: 700;
 }
 th.user-survey-date {
-    margin-right: 175px;
+    margin-right: 135px;
 }
 .user-view-button {
     display: inline;

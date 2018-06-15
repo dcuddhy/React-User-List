@@ -1,6 +1,22 @@
 import React from 'react';
+import UserList from './userList';
+
 
 class User extends React.Component {
+    prettyDate() {
+        var date = new Date(this.props.user.survey_date),
+            fullYear = date.getFullYear(),
+            dayNumber = date.getDate(),
+            month = date.getMonth(),
+            monthsArray =   ["January", "February", "March", "April", "May", "June",
+                            "July", "August", "September", "October", "November", "December"],
+            monthString = monthsArray[month];
+
+        var prettyDate = monthString + ' ' + dayNumber + ', ' + fullYear;
+
+        return prettyDate;
+    }
+
     render() {
         return (
             <tr className="user-list-item">
@@ -17,7 +33,7 @@ class User extends React.Component {
                     </div>
                 </td>
                 <td className="user-survey-date">
-                    {this.props.user.survey_date}
+                    {this.prettyDate()}
                 </td>
             </tr>
         )
