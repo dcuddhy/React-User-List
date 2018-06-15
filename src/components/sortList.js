@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 // NOTE I think it makes a lot of sense to have this as a separate component to
 // trigger the sort toggle in the user list, but I'm unable to change state of parent.
 // If I handle the sorting in the UserList component, I can move on to the next task.
-// In short, this component is well-intended cruft.
+// In short, this component is well-intended demonstrative cruft.
 class SortList extends React.Component {
     sortList(object, value, order) {
         object.sort(function (a, b) {
