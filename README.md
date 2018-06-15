@@ -1,4 +1,42 @@
-Run npm start
+
+# Install
+Install npm dependencies
+```bash
+npm install
+```
+
+# Run
+Start the server
+```bash
+npm start
+```
+
+# Evaluation
+Evaluation of candidates will be factored based on 3 main criteria:
+
+- CSS
+  - How well you implement your CSS
+  - How advanced your CSS techniques are
+  - We are looking for pixel perfect implementation
+- Code
+  - How clean your code is
+  - How modular/portable it is
+  - How well you know and utilize React functionality
+- Fundamentals
+  - How well your CS Fundamentals are
+    - Sorting
+    - Filtering
+  - How well you handle errors and unexpected faults
+  - How well you can take unfamiliar data and understand it.
+
+This project is meant to evaluate your ability to take fairly vague requirements and implement them. You are not required to implement everything in the design, but features completed will be a factor when comparing candidates.
+
+Timeliness is also a huge factor. While there is no maximum time, we are evaluating candidates on a rolling basis so if you take too long, we may accept another candidate before we can evaluate you.
+
+___
+
+
+
 
 
 
