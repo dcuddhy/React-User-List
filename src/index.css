@@ -28,15 +28,15 @@ body{
 #user-table thead tr {
     display: inline-block;
     width: 100%;
-    box-sizing: border-box;
     padding: 15px 15px 5px 15px;
+    box-sizing: border-box;
 }
 .user-list-item {
     display: inline-block;
     background: var(--user-list);
+    width: 100%;
     padding: 15px;
     margin-top: 5px;
-    width: 100%;
     box-sizing: border-box;
 }
 /* This style keeps all user list item text bottom aligned, per design. */
@@ -54,6 +54,9 @@ body{
     float: right;
     text-align: left;
 }
+.user-view{
+    width: 140px;
+}
 .user-survey-date{
     width: 160px
 }
@@ -67,15 +70,16 @@ body{
 th.user-email {
     font-weight: 700;
 }
-th.user-survey-date {
-    margin-right: 135px;
-}
 .user-view-button {
     display: inline;
     background: var(--background);
     padding: 5px 50px;
-    margin-left: 5px;
+    /* Design has us put margins on L/R of this element, but it produces the
+    appearance of larger padding on .user-list-item.  I recommend using
+    margin-left: 5px; to fix this. */
+    margin: 0 5px;
     font-weight: 300;
+    border-radius: 3px;
     cursor: pointer;
 }
 /* I want to use the given assets, so I'm going to use CSS to create a sort toggle
