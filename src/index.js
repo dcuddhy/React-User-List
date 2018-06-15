@@ -7,7 +7,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                < UserList users={this.props.users}/>
+                < UserList users={this.props.users} />
             </div>
         )
     }
