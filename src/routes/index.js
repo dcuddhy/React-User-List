@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import UserList from '../components/userList';
 import UserListHeader from '../components/userListHeader';
-// import '../components/userList.css';
 
 class Index extends React.Component {
     render() {

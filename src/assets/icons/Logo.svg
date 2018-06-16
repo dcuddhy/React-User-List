@@ -7,7 +7,6 @@
     <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Logo">
             <path d="M48,157.460076 L48,159.193916 C61.772973,172.197719 79.9027027,180 100,180 C120.097297,180 138.227027,172.053232 152,159.193916 L152,157.460076 C152,127.984791 128.67027,104 100,104 C71.3297298,104 48,127.984791 48,157.460076 Z" id="Shape" fill="#F0BD1D" fill-rule="nonzero"></path>
-            <!-- //head -->
             <circle id="Oval" fill="#F0BD1D" fill-rule="nonzero" cx="100" cy="68" r="28"></circle>
             <g id="Rectangle-2">
                 <mask id="mask-2" fill="white">
