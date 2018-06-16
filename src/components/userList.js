@@ -8,6 +8,11 @@ class UsersList extends React.Component {
         super();
         this.state = {
             users: [],
+            completeUsers: [],
+            //TODO We will need some version of pageNumber to track current page
+            // Think, when user goes to page 2, and sorts.  User should remain on page two
+            // and view new indexes 10-19
+            // currentPage: 1
         };
     }
 
@@ -27,7 +32,25 @@ class UsersList extends React.Component {
         });
 
         this.setState({users: object});
+        this.setState({completeUsers: object});
         this.setState({usersOrder:  this.state.usersOrder == 'asc' ? 'dsc' : 'asc' });
+    }
+
+    paginate(page) {
+        var pageNumber = page;
+        var itemsPerPage = 9;
+        var initialItemIndex = (page - 1) * itemsPerPage;
+        var finalItemIndex = initialItemIndex + itemsPerPage;
+
+        // This is really only useful for debugging
+        var itemRange = initialItemIndex.toString() + " - " + finalItemIndex.toString();
+
+        console.log('this.state.users: ', this.state.users);
+        console.log('this.state: ', this.state.completeUsers.slice(initialItemIndex, finalItemIndex));
+        console.log('itemRange: ', itemRange);
+        // console.log('initialItemIndex: ', initialItemIndex);
+        this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
+
     }
 
     componentDidMount() {
@@ -36,6 +59,9 @@ class UsersList extends React.Component {
             return results.json();
         }).then(data => {
             let users = data.data;
+            this.setState({completeUsers: users});
+
+            users = data.data.slice(0, 9);
             let usersOrder = '';
 
             this.setState({users: users});
@@ -48,19 +74,23 @@ class UsersList extends React.Component {
     render() {
         return (
             <div id="user-table-container">
+                <div onClick={() => this.paginate(1)}>1</div>
+                <div onClick={() => this.paginate(2)}>2</div>
+                <div onClick={() => this.paginate(3)}>3</div>
+                <div onClick={() => this.paginate(4)}>4</div>
                 <table id="user-table">
                     <thead>
                         <tr>
                             <th className="user-name">
                                 Name
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'full_name', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'full_name', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
                             </th>
                             <th className="user-email">
                                 Email
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'email', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'email', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
@@ -68,7 +98,7 @@ class UsersList extends React.Component {
                             <th className="user-view"></th>
                             <th className="user-survey-date">
                                 Survey Date
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'survey_date', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'survey_date', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
