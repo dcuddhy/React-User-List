@@ -21,7 +21,7 @@
                     <use xlink:href="#path-3"></use>
                 </mask>
                 <use id="Mask" fill="#F0BD1D" xlink:href="#path-3"></use>
-                <polygon fill="currentColor" mask="url(#mask-4)" points="0 0 99.3006993 0 99.3006993 101.408451 200.611888 101.408451 200.611888 200 0 200"></polygon>
+                <polygon fill="#FFFFFF" mask="url(#mask-4)" points="0 0 99.3006993 0 99.3006993 101.408451 200.611888 101.408451 200.611888 200 0 200"></polygon>
             </g>
         </g>
     </g>

@@ -1,0 +1,40 @@
+/* User List Header Styles */
+.user-list-header-container {
+    background: var(--light-blue);
+    height: 72px;
+    margin: -8px -8px 20px -8px;
+    padding: 10px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+.user-list-header {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.user-list-header-logo {
+    display: inline-block;
+    position: relative;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    padding-right: 10px;
+    border-right: 1px solid #FFFFFF;
+}
+.user-list-header-title {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    left: -25px;
+    margin: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+.user-list-header-title span{
+    display: inline-block;
+    margin-top: -3px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
