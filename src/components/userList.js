@@ -10,6 +10,7 @@ class UsersList extends React.Component {
             users: [],
             completeUsers: [],
             currentPage: 1,
+            itemsPerPage: 9
         };
     }
 
@@ -39,7 +40,7 @@ class UsersList extends React.Component {
     paginate(page) {
         // Basic pagination details/setup
         var completeUsersCount = this.state.completeUsers.length,
-            itemsPerPage = 9,
+            itemsPerPage = this.state.itemsPerPage,
             lastPage = Math.ceil(completeUsersCount / itemsPerPage),
             // We will need to know where we were to know where we need to go.
             previousPage = this.state.currentPage,
@@ -83,13 +84,17 @@ class UsersList extends React.Component {
         .then(results => {
             return results.json();
         }).then(data => {
-            let users = data.data;
-            this.setState({completeUsers: users});
+            // Complete list of users of all users
+            let completeUsers = data.data;
+            this.setState({completeUsers: completeUsers});
 
-            users = data.data.slice(0, 9);
-            let usersOrder = '';
 
-            this.setState({users: users});
+            this.setState({totalPages: Math.ceil(completeUsers.length / this.state.itemsPerPage)});
+
+            // Partial list of users to render as paginated
+            let paginatedUsers = data.data.slice(0, 9);
+
+            this.setState({users: paginatedUsers});
             this.setState({usersOrder: 'asc'});
         })
     }
