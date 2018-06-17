@@ -5,7 +5,7 @@ class Info extends React.Component {
     render() {
         return (
             <div>
-                this is a user info page - i hope
+                This is a user info page - I hope.
             </div>
         )
     }

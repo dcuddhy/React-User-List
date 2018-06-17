@@ -15,8 +15,8 @@ class UsersList extends React.Component {
     }
 
     // Function to sort user list
-    // TODO This function should be moved to it's own component.
     // NOTE This takes any object as an argument, but we really only need users for now.
+    // TODO Maybe we should use something like Browserify to export/require functions in the future.
     sortList(object, value, order) {
         object.sort(function (a, b) {
             if (a[value] < b[value]) {
@@ -88,19 +88,16 @@ class UsersList extends React.Component {
             let completeUsers = data.data;
             this.setState({completeUsers: completeUsers});
 
-
-            this.setState({totalPages: Math.ceil(completeUsers.length / this.state.itemsPerPage)});
-
             // Partial list of users to render as paginated
-            let paginatedUsers = data.data.slice(0, 9);
+            let paginatedUsers = data.data.slice(0, this.state.itemsPerPage);
 
             this.setState({users: paginatedUsers});
             this.setState({usersOrder: 'asc'});
         })
     }
 
-    // TODO When sorting is moved out to it's own component, we will call the sort-toggle element like this:
-    // <SortList object={this.state.users} value="full_name" order={this.state.usersOrder} />
+    // We should break this down more into components - something like:
+    // thead : <sortingLabels >, tbody : < User />, below (or separate) : < Pagination />
     render() {
         return (
             <div id="user-table-container">
@@ -133,7 +130,7 @@ class UsersList extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.users.map((user)=> {
-                            return < User user={user} key={user.id}/>
+                            return < User user={user} key={user.id} />
                         })}
                     </tbody>
                 </table>

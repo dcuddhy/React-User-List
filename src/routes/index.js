@@ -8,7 +8,7 @@ class Index extends React.Component {
         return (
             <div>
                 < UserListHeader />
-                < UserList users={this.props.users}/>
+                < UserList users={this.props.users} />
             </div>
         )
     }

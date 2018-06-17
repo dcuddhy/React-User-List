@@ -82,7 +82,6 @@ th.user-email {
 }
 
 /* Pagination */
-
 .pagination-container {
     /* We use absolute & top to keep pagination from jumping up on last page if page not full  */
     position: absolute;
