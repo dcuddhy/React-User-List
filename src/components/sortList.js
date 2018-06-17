@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // trigger the sort toggle in the user list, but I'm unable to change state of parent.
 // If I handle the sorting in the UserList component, I can move on to the next task.
 // In short, this component is well-intended demonstrative cruft.
-class SortList extends React.Component {
+class SortToggles extends React.Component {
     sortList(object, value, order) {
         object.sort(function (a, b) {
             if (a[value] < b[value]) {
@@ -31,4 +31,4 @@ class SortList extends React.Component {
     }
 }
 
-export default SortList;
+export default SortToggles;
