@@ -22,9 +22,9 @@ class UsersList extends React.Component {
     sortList(object, value, order) {
         object.sort(function (a, b) {
             if (a[value] < b[value]) {
-                return order == 'asc' ? -1 : 1;
+                return order === 'asc' ? -1 : 1;
             } else if (a[value] > b[value]) {
-                return order == 'asc' ? 1 : -1;
+                return order === 'asc' ? 1 : -1;
             } else {
                 // Object values are equal.
                 return 0;
@@ -32,30 +32,36 @@ class UsersList extends React.Component {
         });
         this.setState({users: object});
         this.setState({completeUsers: object});
-        this.setState({usersOrder:  this.state.usersOrder == 'asc' ? 'dsc' : 'asc' });
+        this.setState({usersOrder:  this.state.usersOrder === 'asc' ? 'dsc' : 'asc' });
 
         // We must paginate after setState for users
         this.paginate(this.state.currentPage);
     }
 
     paginate(page) {
+        // Basic pagination details/setup
+        var completeUsersCount = this.state.completeUsers.length,
+            itemsPerPage = 9,
+            lastPage = Math.ceil(completeUsersCount / itemsPerPage),
+            // We will need to know where we were to know where we need to go.
+            previousPage = this.state.currentPage,
+            // Make a currentPage var, so we can update below and define initialItemIndex
+            currentPage;
 
-        var currentPage;
-        var previousPage = this.state.currentPage;
-
-        if (typeof page == 'number'){
+        // Conditionals to set currentPage upon user interaction
+        if (typeof page === 'number'){
             currentPage = page;
             // console.log('YOU CLICKED A NUMBER');
             // console.log('previousPage: ', previousPage);
             // console.log('button: ', page);
             // console.log('currentPage: ', currentPage);
-        } else if (page == 'next' && previousPage != 3) {
+        } else if (page === 'next' && previousPage !== lastPage) {
             currentPage = previousPage + 1;
             // console.log('YOU CLICKED NEXT');
             // console.log('previousPage: ', previousPage);
             // console.log('button: ', page);
             // console.log('currentPage: ', currentPage);
-        } else if (page == 'prev' && previousPage != 1) {
+        } else if (page === 'prev' && previousPage !== 1) {
             currentPage = previousPage - 1;
             // console.log('YOU CLICKED PREVIOUS');
             // console.log('previousPage: ', previousPage);
@@ -69,13 +75,11 @@ class UsersList extends React.Component {
             return;
         }
 
-        var itemsPerPage = 9;
-        var initialItemIndex = (currentPage - 1) * itemsPerPage;
-        var finalItemIndex = initialItemIndex + itemsPerPage;
+        // We will need these values to splice the array to get only correct items for the page!
+        var initialItemIndex = (currentPage - 1) * itemsPerPage,
+            finalItemIndex = initialItemIndex + itemsPerPage;
 
-        // This is really only useful for debugging
-        var itemRange = initialItemIndex.toString() + " - " + finalItemIndex.toString();
-
+        // Update states
         this.setState({currentPage: currentPage});
         this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
     }

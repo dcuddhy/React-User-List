@@ -81,10 +81,10 @@ th.user-email {
     margin-top: -2px;
 }
 
+/* Pagination */
 .pagination-container {
     text-align: center;
 }
-/* Pagination */
 .pagination-container * {
     display: inline-block;
     background: #FFFFFF;
