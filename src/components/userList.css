@@ -82,7 +82,14 @@ th.user-email {
 }
 
 /* Pagination */
+
 .pagination-container {
+    /* We use absolute & top to keep pagination from jumping up on last page if page not full  */
+    position: absolute;
+    top: 680px;
+    /* Because we use absolute, we need to set left, right, and text-align to center horizontally */
+    left: 0;
+    right: 0;
     text-align: center;
 }
 .pagination-container * {
@@ -97,7 +104,6 @@ th.user-email {
     border-radius: 3px;
     cursor: pointer;
 }
-
 .pagination-button.active {
     background: var(--light-blue);
     color: #FFFFFF;

@@ -51,8 +51,6 @@ class UsersList extends React.Component {
         // Conditionals to set currentPage upon user interaction
         if (typeof page === 'number'){
             currentPage = page;
-            document.getElementById(previousPage).classList.remove('active');
-            document.getElementById(page).classList.add('active');
             // console.log('YOU CLICKED A NUMBER');
             // console.log('previousPage: ', previousPage);
             // console.log('button: ', page);
@@ -81,9 +79,21 @@ class UsersList extends React.Component {
         var initialItemIndex = (currentPage - 1) * itemsPerPage,
             finalItemIndex = initialItemIndex + itemsPerPage;
 
+        // Update styles
+        document.getElementById(previousPage).classList.remove('active');
+        document.getElementById(currentPage).classList.add('active');
+        if (currentPage === 1) {
+            document.getElementById('prev').classList.add('disabled');
+        } else if (currentPage === lastPage) {
+            document.getElementById('next').classList.add('disabled');
+        } else {
+            document.getElementById('prev').classList.remove('disabled');
+            document.getElementById('next').classList.remove('disabled');
+        }
+
         // Update states
-        this.setState({currentPage: currentPage});
         this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
+        this.setState({currentPage: currentPage});
     }
 
     componentDidMount() {
@@ -107,13 +117,6 @@ class UsersList extends React.Component {
     render() {
         return (
             <div id="user-table-container">
-                <div className="pagination-container">
-                    <div className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
-                    <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
-                    <div id="2" className="pagination-button" onClick={() => this.paginate(2)}>2</div>
-                    <div id="3" className="pagination-button" onClick={() => this.paginate(3)}>3</div>
-                    <div className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
-                </div>
                 <table id="user-table">
                     <thead>
                         <tr>
@@ -147,6 +150,13 @@ class UsersList extends React.Component {
                         })}
                     </tbody>
                 </table>
+                <div className="pagination-container">
+                    <div id="prev" className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
+                    <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
+                    <div id="2" className="pagination-button" onClick={() => this.paginate(2)}>2</div>
+                    <div id="3" className="pagination-button" onClick={() => this.paginate(3)}>3</div>
+                    <div id="next" className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
+                </div>
             </div>
         )
     }
