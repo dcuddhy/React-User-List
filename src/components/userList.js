@@ -9,9 +9,6 @@ class UsersList extends React.Component {
         this.state = {
             users: [],
             completeUsers: [],
-            //TODO We will need some version of pageNumber to track current page
-            // Think, when user goes to page 2, and sorts.  User should remain on page two
-            // and view new indexes 10-19
             currentPage: 1,
         };
     }
@@ -38,6 +35,7 @@ class UsersList extends React.Component {
         this.paginate(this.state.currentPage);
     }
 
+    // TODO Pagination should absolutely be moved to its own component.
     paginate(page) {
         // Basic pagination details/setup
         var completeUsersCount = this.state.completeUsers.length,
@@ -51,27 +49,11 @@ class UsersList extends React.Component {
         // Conditionals to set currentPage upon user interaction
         if (typeof page === 'number'){
             currentPage = page;
-            // console.log('YOU CLICKED A NUMBER');
-            // console.log('previousPage: ', previousPage);
-            // console.log('button: ', page);
-            // console.log('currentPage: ', currentPage);
         } else if (page === 'next' && previousPage !== lastPage) {
             currentPage = previousPage + 1;
-            // console.log('YOU CLICKED NEXT');
-            // console.log('previousPage: ', previousPage);
-            // console.log('button: ', page);
-            // console.log('currentPage: ', currentPage);
         } else if (page === 'prev' && previousPage !== 1) {
             currentPage = previousPage - 1;
-            // console.log('YOU CLICKED PREVIOUS');
-            // console.log('previousPage: ', previousPage);
-            // console.log('button: ', page);
-            // console.log('currentPage: ', currentPage);
         } else {
-            // console.log('YOU CANT DO THAT');
-            // console.log('previousPage: ', previousPage);
-            // console.log('button: ', page);
-            // console.log('currentPage: ', currentPage);
             return;
         }
 
