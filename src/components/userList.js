@@ -12,7 +12,7 @@ class UsersList extends React.Component {
             //TODO We will need some version of pageNumber to track current page
             // Think, when user goes to page 2, and sorts.  User should remain on page two
             // and view new indexes 10-19
-            // currentPage: 1
+            currentPage: 1,
         };
     }
 
@@ -30,10 +30,12 @@ class UsersList extends React.Component {
                 return 0;
             }
         });
-
         this.setState({users: object});
         this.setState({completeUsers: object});
         this.setState({usersOrder:  this.state.usersOrder == 'asc' ? 'dsc' : 'asc' });
+
+        // We must paginate after setState for users
+        this.paginate(this.state.currentPage);
     }
 
     paginate(page) {
@@ -45,13 +47,11 @@ class UsersList extends React.Component {
         // This is really only useful for debugging
         var itemRange = initialItemIndex.toString() + " - " + finalItemIndex.toString();
 
-        console.log('this.state.users: ', this.state.users);
-        console.log('this.state: ', this.state.completeUsers.slice(initialItemIndex, finalItemIndex));
-        console.log('itemRange: ', itemRange);
         // console.log('initialItemIndex: ', initialItemIndex);
+        this.setState({currentPage: pageNumber});
         this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
-
     }
+
 
     componentDidMount() {
         fetch('http://localhost:3000/api/users')
@@ -74,10 +74,13 @@ class UsersList extends React.Component {
     render() {
         return (
             <div id="user-table-container">
-                <div onClick={() => this.paginate(1)}>1</div>
-                <div onClick={() => this.paginate(2)}>2</div>
-                <div onClick={() => this.paginate(3)}>3</div>
-                <div onClick={() => this.paginate(4)}>4</div>
+                <div className="pagination-container">
+                    <div className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
+                    <div className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
+                    <div className="pagination-button" onClick={() => this.paginate(2)}>2</div>
+                    <div className="pagination-button" onClick={() => this.paginate(3)}>3</div>
+                    <div className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
+                </div>
                 <table id="user-table">
                     <thead>
                         <tr>

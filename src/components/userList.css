@@ -80,3 +80,28 @@ th.user-email {
 .sort-toggle img:nth-of-type(2) {
     margin-top: -2px;
 }
+
+.pagination-container {
+    text-align: center;
+}
+/* Pagination */
+.pagination-container * {
+    display: inline-block;
+    background: #FFFFFF;
+    min-width: 35px;
+    box-sizing: border-box;
+    padding: 8px;
+    margin: 4px;
+    color: var(--text-color);
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pagination-button.active {
+    background: var(--light-blue);
+    color: #FFFFFF;
+}
+.pagination-button.disabled {
+    color: #CCCCCC;
+}
