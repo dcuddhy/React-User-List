@@ -39,19 +39,46 @@ class UsersList extends React.Component {
     }
 
     paginate(page) {
-        var pageNumber = page;
+
+        var currentPage;
+        var previousPage = this.state.currentPage;
+
+        if (typeof page == 'number'){
+            currentPage = page;
+            // console.log('YOU CLICKED A NUMBER');
+            // console.log('previousPage: ', previousPage);
+            // console.log('button: ', page);
+            // console.log('currentPage: ', currentPage);
+        } else if (page == 'next' && previousPage != 3) {
+            currentPage = previousPage + 1;
+            // console.log('YOU CLICKED NEXT');
+            // console.log('previousPage: ', previousPage);
+            // console.log('button: ', page);
+            // console.log('currentPage: ', currentPage);
+        } else if (page == 'prev' && previousPage != 1) {
+            currentPage = previousPage - 1;
+            // console.log('YOU CLICKED PREVIOUS');
+            // console.log('previousPage: ', previousPage);
+            // console.log('button: ', page);
+            // console.log('currentPage: ', currentPage);
+        } else {
+            // console.log('YOU CANT DO THAT');
+            // console.log('previousPage: ', previousPage);
+            // console.log('button: ', page);
+            // console.log('currentPage: ', currentPage);
+            return;
+        }
+
         var itemsPerPage = 9;
-        var initialItemIndex = (page - 1) * itemsPerPage;
+        var initialItemIndex = (currentPage - 1) * itemsPerPage;
         var finalItemIndex = initialItemIndex + itemsPerPage;
 
         // This is really only useful for debugging
         var itemRange = initialItemIndex.toString() + " - " + finalItemIndex.toString();
 
-        // console.log('initialItemIndex: ', initialItemIndex);
-        this.setState({currentPage: pageNumber});
+        this.setState({currentPage: currentPage});
         this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
     }
-
 
     componentDidMount() {
         fetch('http://localhost:3000/api/users')
