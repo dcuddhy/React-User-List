@@ -110,4 +110,5 @@ th.user-email {
 }
 .pagination-button.disabled {
     color: #CCCCCC;
+    pointer-events: none;
 }
