@@ -51,6 +51,8 @@ class UsersList extends React.Component {
         // Conditionals to set currentPage upon user interaction
         if (typeof page === 'number'){
             currentPage = page;
+            document.getElementById(previousPage).classList.remove('active');
+            document.getElementById(page).classList.add('active');
             // console.log('YOU CLICKED A NUMBER');
             // console.log('previousPage: ', previousPage);
             // console.log('button: ', page);
@@ -107,9 +109,9 @@ class UsersList extends React.Component {
             <div id="user-table-container">
                 <div className="pagination-container">
                     <div className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
-                    <div className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
-                    <div className="pagination-button" onClick={() => this.paginate(2)}>2</div>
-                    <div className="pagination-button" onClick={() => this.paginate(3)}>3</div>
+                    <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
+                    <div id="2" className="pagination-button" onClick={() => this.paginate(2)}>2</div>
+                    <div id="3" className="pagination-button" onClick={() => this.paginate(3)}>3</div>
                     <div className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
                 </div>
                 <table id="user-table">
