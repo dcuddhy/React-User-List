@@ -8,6 +8,9 @@ class UsersList extends React.Component {
         super();
         this.state = {
             users: [],
+            completeUsers: [],
+            currentPage: 1,
+            itemsPerPage: 9
         };
     }
 
@@ -17,17 +20,63 @@ class UsersList extends React.Component {
     sortList(object, value, order) {
         object.sort(function (a, b) {
             if (a[value] < b[value]) {
-                return order == 'asc' ? -1 : 1;
+                return order === 'asc' ? -1 : 1;
             } else if (a[value] > b[value]) {
-                return order == 'asc' ? 1 : -1;
+                return order === 'asc' ? 1 : -1;
             } else {
                 // Object values are equal.
                 return 0;
             }
         });
-
         this.setState({users: object});
-        this.setState({usersOrder:  this.state.usersOrder == 'asc' ? 'dsc' : 'asc' });
+        this.setState({completeUsers: object});
+        this.setState({usersOrder:  this.state.usersOrder === 'asc' ? 'dsc' : 'asc' });
+
+        // We must paginate after setState for users
+        this.paginate(this.state.currentPage);
+    }
+
+    // TODO Pagination should absolutely be moved to its own component.
+    paginate(page) {
+        // Basic pagination details/setup
+        var completeUsersCount = this.state.completeUsers.length,
+            itemsPerPage = this.state.itemsPerPage,
+            lastPage = Math.ceil(completeUsersCount / itemsPerPage),
+            // We will need to know where we were to know where we need to go.
+            previousPage = this.state.currentPage,
+            // Make a currentPage var, so we can update below and define initialItemIndex
+            currentPage;
+
+        // Conditionals to set currentPage upon user interaction
+        if (typeof page === 'number'){
+            currentPage = page;
+        } else if (page === 'next' && previousPage !== lastPage) {
+            currentPage = previousPage + 1;
+        } else if (page === 'prev' && previousPage !== 1) {
+            currentPage = previousPage - 1;
+        } else {
+            return;
+        }
+
+        // We will need these values to splice the array to get only correct items for the page!
+        var initialItemIndex = (currentPage - 1) * itemsPerPage,
+            finalItemIndex = initialItemIndex + itemsPerPage;
+
+        // Update styles
+        document.getElementById(previousPage).classList.remove('active');
+        document.getElementById(currentPage).classList.add('active');
+        if (currentPage === 1) {
+            document.getElementById('prev').classList.add('disabled');
+        } else if (currentPage === lastPage) {
+            document.getElementById('next').classList.add('disabled');
+        } else {
+            document.getElementById('prev').classList.remove('disabled');
+            document.getElementById('next').classList.remove('disabled');
+        }
+
+        // Update states
+        this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
+        this.setState({currentPage: currentPage});
     }
 
     componentDidMount() {
@@ -35,10 +84,17 @@ class UsersList extends React.Component {
         .then(results => {
             return results.json();
         }).then(data => {
-            let users = data.data;
-            let usersOrder = '';
+            // Complete list of users of all users
+            let completeUsers = data.data;
+            this.setState({completeUsers: completeUsers});
 
-            this.setState({users: users});
+
+            this.setState({totalPages: Math.ceil(completeUsers.length / this.state.itemsPerPage)});
+
+            // Partial list of users to render as paginated
+            let paginatedUsers = data.data.slice(0, 9);
+
+            this.setState({users: paginatedUsers});
             this.setState({usersOrder: 'asc'});
         })
     }
@@ -53,14 +109,14 @@ class UsersList extends React.Component {
                         <tr>
                             <th className="user-name">
                                 Name
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'full_name', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'full_name', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
                             </th>
                             <th className="user-email">
                                 Email
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'email', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'email', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
@@ -68,7 +124,7 @@ class UsersList extends React.Component {
                             <th className="user-view"></th>
                             <th className="user-survey-date">
                                 Survey Date
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.users, 'survey_date', this.state.usersOrder)}>
+                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'survey_date', this.state.usersOrder)}>
                                     <img src={require("../assets/icons/Caret_Up.svg")} />
                                     <img src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
@@ -81,6 +137,13 @@ class UsersList extends React.Component {
                         })}
                     </tbody>
                 </table>
+                <div className="pagination-container">
+                    <div id="prev" className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
+                    <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
+                    <div id="2" className="pagination-button" onClick={() => this.paginate(2)}>2</div>
+                    <div id="3" className="pagination-button" onClick={() => this.paginate(3)}>3</div>
+                    <div id="next" className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
+                </div>
             </div>
         )
     }
