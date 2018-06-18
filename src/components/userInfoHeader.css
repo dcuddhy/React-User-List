@@ -1,0 +1,55 @@
+/* User List Header Styles */
+.user-info-header-container {
+    /* Background will eventually need to become a gradient */
+    background: var(--light-blue);
+    height: 250px;
+    margin: -8px -8px 50px -8px;
+    padding-top: 40px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+.user-info-header {
+    width: 80%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+.user-info-header-logo {
+    display: inline-block;
+    position: relative;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    padding-right: 10px;
+    border-right: 1px solid #FFFFFF;
+}
+.user-info-header-title {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    left: -25px;
+    margin: 10px;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased; /* Limited browser compatibility */
+}
+/* h tags - h1, h2, h3 */
+/* We'd be able to nest all user-info-header-title children styles if we were using Sass */
+/* TODO Start using Sass! */
+.user-info-header-title h1,
+.user-info-header-title h2,
+.user-info-header-title h3 {
+    margin: 0px;
+}
+.user-info-header-title h1 {
+    font-size: 42px;
+    font-weight: 700;
+    -webkit-font-smoothing: initial; /* Limited browser compatibility */
+}
+.user-info-header-title h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+.user-info-header-title h3 {
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 400;
+}
