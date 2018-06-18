@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import UserList from '../components/userList';
 import UserListHeader from '../components/userListHeader';
 
