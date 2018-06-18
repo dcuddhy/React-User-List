@@ -36,7 +36,6 @@ class UsersList extends React.Component {
         this.paginate(this.state.currentPage);
     }
 
-    // TODO Pagination should absolutely be moved to its own component.
     paginate(page) {
         // Basic pagination details/setup
         var completeUsersCount = this.state.completeUsers.length,
@@ -136,6 +135,7 @@ class UsersList extends React.Component {
                         })}
                     </tbody>
                 </table>
+                {/* Pagination should absolutely be moved to its own component. */}
                 <div className="pagination-container">
                     <div id="prev" className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
                     <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
