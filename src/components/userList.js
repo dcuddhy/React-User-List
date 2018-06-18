@@ -99,7 +99,7 @@ class UsersList extends React.Component {
     }
 
     // We should break this down more into components - something like:
-    // thead : <sortingLabels >, tbody : < User />, below (or separate) : < Pagination />
+    // thead : <sortingLabels >, tbody : <User />, below (or separate) : <Pagination />
     render() {
         return (
             <div id="user-table-container">
@@ -132,7 +132,7 @@ class UsersList extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.users.map((user)=> {
-                            return < User user={user} key={user.id} />
+                            return <User user={user} key={user.id} />
                         })}
                     </tbody>
                 </table>

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../components/userListHeader.css';
 
+
 class UserListHeader extends React.Component {
     render() {
         // TODO Logo.svg uses currentColor to fill circle around logo, but it doesn't

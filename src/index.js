@@ -7,15 +7,16 @@ import Index from './routes/index';
 import Info from './routes/info';
 import './index.css';
 
+
 ReactDOM.render(
-    < ErrorBoundary >
+    <ErrorBoundary>
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Index} />
                 <Route path="/info" exact component={Info} />
             </Switch>
         </BrowserRouter>
-    </ ErrorBoundary>,
+    </ErrorBoundary>,
     document.getElementById('root')
 )
 

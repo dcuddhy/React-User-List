@@ -3,7 +3,6 @@ import './errorBoundary.css';
 import UserListHeader from '../components/userListHeader';
 
 
-
 // Error Handling docs
 // https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
 class ErrorBoundary extends React.Component {
@@ -25,7 +24,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
         return (
             <div>
-                < UserListHeader />
+                <UserListHeader />
                 <div className="error-boundary-error">
                     <h1>Something went wrong.</h1>
                 </div>
