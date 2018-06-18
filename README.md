@@ -1,6 +1,9 @@
 # Summary
 This is the front end for a code challenge.
 
+Find it on GitHub:
+https://github.com/dcuddhy/React-User-List/
+
 # Install
 Install npm dependencies
 ```bash
@@ -12,16 +15,8 @@ To begin the development
 ```bash
 npm start
 ```
-OR
-```bash
-yarn start
-```
 
 To create a production bundle
 ```bash
 npm run build
-```
-OR
-```bash
-yarn build
 ```
