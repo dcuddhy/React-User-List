@@ -13,7 +13,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Index} />
-                <Route path="/info" exact component={Info} />
+                <Route path="/info" component={Info} />
             </Switch>
         </BrowserRouter>
     </ErrorBoundary>,
