@@ -64,6 +64,10 @@ th.user-email {
     border-radius: 3px;
     cursor: pointer;
 }
+.user-view a {
+    color: var(--text-color);
+    text-decoration: none;
+}
 /* I want to use the given assets, so I'm going to use CSS to create a sort toggle
  with two icons rather than creating one icon or bringing FontAwesome into this. */
 .sort-toggle {
