@@ -93,7 +93,9 @@ class UsersList extends React.Component {
 
             this.setState({users: paginatedUsers});
             this.setState({usersOrder: 'asc'});
-        })
+        }).catch(function() {
+            console.log("Fetching data failed at UserList.componentDidMount()");
+        });
     }
 
     // We should break this down more into components - something like:
