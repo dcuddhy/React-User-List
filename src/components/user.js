@@ -27,9 +27,11 @@ class User extends React.Component {
                 </td>
                 <td className="user-view">
                     {/* Buttons come with clunky defualt styles.  Let's just use a div. */}
-                    <div className="user-view-button">
-                        View
-                    </div>
+                    <a href="./info">
+                        <div className="user-view-button">
+                            View
+                        </div>
+                    </a>
                 </td>
                 <td className="user-survey-date">
                     {this.prettyDate()}
