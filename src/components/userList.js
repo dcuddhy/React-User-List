@@ -93,11 +93,13 @@ class UsersList extends React.Component {
 
             this.setState({users: paginatedUsers});
             this.setState({usersOrder: 'asc'});
-        })
+        }).catch(function() {
+            console.log("Fetching data failed at UserList.componentDidMount()");
+        });
     }
 
     // We should break this down more into components - something like:
-    // thead : <sortingLabels >, tbody : < User />, below (or separate) : < Pagination />
+    // thead : <sortingLabels >, tbody : <User />, below (or separate) : <Pagination />
     render() {
         return (
             <div id="user-table-container">
@@ -107,30 +109,30 @@ class UsersList extends React.Component {
                             <th className="user-name">
                                 Name
                                 <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'full_name', this.state.usersOrder)}>
-                                    <img src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img src={require("../assets/icons/Caret_Down.svg")} />
+                                    <img alt="toggle sort order by name" src={require("../assets/icons/Caret_Up.svg")} />
+                                    <img alt="toggle sort order by name" src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
                             </th>
                             <th className="user-email">
                                 Email
                                 <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'email', this.state.usersOrder)}>
-                                    <img src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img src={require("../assets/icons/Caret_Down.svg")} />
+                                    <img alt="toggle sort order by email" src={require("../assets/icons/Caret_Up.svg")} />
+                                    <img alt="toggle sort order by email" src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
                             </th>
                             <th className="user-view"></th>
                             <th className="user-survey-date">
                                 Survey Date
                                 <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'survey_date', this.state.usersOrder)}>
-                                    <img src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img src={require("../assets/icons/Caret_Down.svg")} />
+                                    <img alt="toggle sort order by survey date" src={require("../assets/icons/Caret_Up.svg")} />
+                                    <img alt="toggle sort order by survey date" src={require("../assets/icons/Caret_Down.svg")} />
                                 </div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.users.map((user)=> {
-                            return < User user={user} key={user.id} />
+                            return <User user={user} key={user.id} />
                         })}
                     </tbody>
                 </table>

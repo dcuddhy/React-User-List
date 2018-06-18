@@ -1,6 +1,6 @@
 import React from 'react';
 import '../components/userListHeader.css';
-import Foobar from '../components/userListHeader.css';
+
 
 class UserListHeader extends React.Component {
     render() {
@@ -11,7 +11,7 @@ class UserListHeader extends React.Component {
         return (
             <div className="user-list-header-container">
                 <div className="user-list-header">
-                    <img className="user-list-header-logo" src={require("../assets/icons/Logo_With_White.svg")} />
+                    <img alt="Pairin Logo" className="user-list-header-logo" src={require("../assets/icons/Logo_With_White.svg")} />
                     <div className="user-list-header-title">
                         PAIRIN <br />
                         <span>INFORM</span>

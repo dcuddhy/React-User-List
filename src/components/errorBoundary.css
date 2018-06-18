@@ -1,0 +1,7 @@
+/* Error Boundary Styles */
+.error-boundary-error {
+    text-align: center;
+}
+.error-boundary-error h1{
+    font-weight: 300;
+}
