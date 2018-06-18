@@ -1,11 +1,13 @@
 import React from 'react';
+import UserListHeader from '../components/userInfoHeader';
 
 
 class Info extends React.Component {
     render() {
         return (
             <div>
-                This is a user info page - I hope.
+                <UserListHeader />
+                User info will go here.
             </div>
         )
     }
