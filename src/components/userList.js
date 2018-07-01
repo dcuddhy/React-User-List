@@ -19,13 +19,10 @@ class UsersList extends React.Component {
     // TODO Maybe we should use something like Browserify to export/require functions in the future.
     sortList(object, value, order) {
         object.sort(function (a, b) {
-            if (a[value] < b[value]) {
-                return order === 'asc' ? -1 : 1;
-            } else if (a[value] > b[value]) {
-                return order === 'asc' ? 1 : -1;
+            if (order === 'asc') {
+                return a[value].localeCompare(b[value]);
             } else {
-                // Object values are equal.
-                return 0;
+                return -a[value].localeCompare(b[value]);
             }
         });
         this.setState({users: object});
