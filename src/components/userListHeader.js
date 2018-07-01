@@ -1,17 +1,19 @@
 import React from 'react';
+import Logo from './logo'
 import '../components/userListHeader.css';
-
 
 class UserListHeader extends React.Component {
     render() {
-        // TODO Logo.svg uses currentColor to fill circle around logo, but it doesn't
-        // work when SVGs are rendered this way in an img tag.  A quick fix is to create
-        // variations of the logo to hardcode the color we need.  This needs to be refactored
-        // to use currentColor as intended.
+        // TODO I'm having trouble rendering the Logo as an SVG.  I figure if I
+        // put the SVG code into it's own render, I can still use currentColor.
+        // This solution is good but not great.  Figure out how to render SVG
+        // in a way that we can continue to use currentColor.
         return (
             <div className="user-list-header-container">
                 <div className="user-list-header">
-                    <img alt="Pairin Logo" className="user-list-header-logo" src={require("../assets/icons/Logo_With_White.svg")} />
+                    <div className="user-list-header-logo">
+                        <Logo></Logo>
+                    </div>
                     <div className="user-list-header-title">
                         PAIRIN <br />
                         <span>INFORM</span>
