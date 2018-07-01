@@ -61,18 +61,6 @@ class UsersList extends React.Component {
         var initialItemIndex = (currentPage - 1) * itemsPerPage,
             finalItemIndex = initialItemIndex + itemsPerPage;
 
-        // Update styles
-        document.getElementById(previousPage).classList.remove('active');
-        document.getElementById(currentPage).classList.add('active');
-        if (currentPage === 1) {
-            document.getElementById('prev').classList.add('disabled');
-        } else if (currentPage === lastPage) {
-            document.getElementById('next').classList.add('disabled');
-        } else {
-            document.getElementById('prev').classList.remove('disabled');
-            document.getElementById('next').classList.remove('disabled');
-        }
-
         // Update states
         this.setState({users: this.state.completeUsers.slice(initialItemIndex, finalItemIndex)});
         this.setState({currentPage: currentPage});
@@ -137,11 +125,11 @@ class UsersList extends React.Component {
                 </table>
                 {/* Pagination should absolutely be moved to its own component. */}
                 <div className="pagination-container">
-                    <div id="prev" className="pagination-button disabled" onClick={() => this.paginate('prev')}>PREV</div>
-                    <div id="1" className="pagination-button active" onClick={() => this.paginate(1)}>1</div>
-                    <div id="2" className="pagination-button" onClick={() => this.paginate(2)}>2</div>
-                    <div id="3" className="pagination-button" onClick={() => this.paginate(3)}>3</div>
-                    <div id="next" className="pagination-button" onClick={() => this.paginate('next')}>NEXT</div>
+                    <div id="prev" className= {(this.state.currentPage === 1 ? 'disabled ' : ' ') + 'pagination-button'} onClick={() => this.paginate('prev')}>PREV</div>
+                    <div id="1" className= {(this.state.currentPage === 1 ? 'active ' : ' ') + 'pagination-button'} onClick={() => this.paginate(1)}>1</div>
+                    <div id="2" className= {(this.state.currentPage === 2 ? 'active ' : ' ') + 'pagination-button'} onClick={() => this.paginate(2)}>2</div>
+                    <div id="3" className= {(this.state.currentPage === 3 ? 'active ' : ' ') + 'pagination-button'} onClick={() => this.paginate(3)}>3</div>
+                    <div id="next" className= {(this.state.currentPage === 3 ? 'disabled ' : ' ') + 'pagination-button'} onClick={() => this.paginate('next')}>NEXT</div>
                 </div>
             </div>
         )

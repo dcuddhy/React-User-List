@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+// We're not actually using BrowserRouter yet, but we will
+// import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class User extends React.Component {
