@@ -1,5 +1,6 @@
 import React from 'react';
 import User from './user';
+import UserListTableHead from './userListTableHead';
 import '../components/userList.css';
 
 
@@ -12,6 +13,8 @@ class UsersList extends React.Component {
             currentPage: 1,
             itemsPerPage: 9
         };
+        // We need to bind this for userListTableHead to be able to run sortList properly
+        this.sortList = this.sortList.bind(this);
     }
 
     // Function to sort user list
@@ -88,32 +91,7 @@ class UsersList extends React.Component {
         return (
             <div id="user-table-container">
                 <table id="user-table">
-                    <thead>
-                        <tr>
-                            <th className="user-name">
-                                Name
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'full_name', this.state.usersOrder)}>
-                                    <img alt="toggle sort order by name" src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img alt="toggle sort order by name" src={require("../assets/icons/Caret_Down.svg")} />
-                                </div>
-                            </th>
-                            <th className="user-email">
-                                Email
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'email', this.state.usersOrder)}>
-                                    <img alt="toggle sort order by email" src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img alt="toggle sort order by email" src={require("../assets/icons/Caret_Down.svg")} />
-                                </div>
-                            </th>
-                            <th className="user-view"></th>
-                            <th className="user-survey-date">
-                                Survey Date
-                                <div className="sort-toggle" onClick={() => this.sortList(this.state.completeUsers, 'survey_date', this.state.usersOrder)}>
-                                    <img alt="toggle sort order by survey date" src={require("../assets/icons/Caret_Up.svg")} />
-                                    <img alt="toggle sort order by survey date" src={require("../assets/icons/Caret_Down.svg")} />
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
+                    <UserListTableHead completeUsers={this.state.completeUsers} usersOrder={this.state.usersOrder} sortOn='full_name' sortList={this.sortList}></UserListTableHead>
                     <tbody>
                         {this.state.users.map((user)=> {
                             return <User user={user} key={user.id} />
